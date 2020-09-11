@@ -100,11 +100,15 @@ export class FirebaseuiAngularLibraryService {
       }
 
       const language = languages[0];
+      const firebaseuiSrc =
+        language.code === 'ar'
+          ? 'https://firebasestorage.googleapis.com/v0/b/gaga-testing.appspot.com/o/CAppLib%2Ffirebase-ui-auth__ar.js?alt=media'
+          : `${FirebaseuiAngularLibraryService.FIREBASEUI_CDN_URL}/firebase-ui-auth__${language.code}.js`;
       const toLoad: Resource[] = [
         {
           name: `firebaseui-${language.code}`,
           type: "js",
-          src: `${FirebaseuiAngularLibraryService.FIREBASEUI_CDN_URL}/firebase-ui-auth__${language.code}.js`
+          src: firebaseuiSrc
         }
       ];
 
